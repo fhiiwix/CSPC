@@ -15,7 +15,7 @@ Both return an array of the atom count at each time step.
 import numpy as np
 
 
-def simulate_loop(N0, lam, dt=0.05, steps=200, seed=0):
+def simulate_loop(N0, lam, dt=0.05, steps=200, seed=None):
     """Radioactive decay, pure-Python loop version (slow)."""
     if lam < 0:
         raise ValueError("lam must be >= 0")
@@ -32,7 +32,7 @@ def simulate_loop(N0, lam, dt=0.05, steps=200, seed=0):
     return np.array(counts)
 
 
-def simulate(N0, lam, dt=0.05, steps=200, seed=0):
+def simulate(N0, lam, dt=0.05, steps=200, seed=None):
     """Radioactive decay, vectorised NumPy version (fast)."""
     if lam < 0:
         raise ValueError("lam must be >= 0")

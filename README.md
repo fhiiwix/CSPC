@@ -1,17 +1,28 @@
-# CSPC — Computer Science for Physics and Chemistry
+# CSPC Computer Science for Physics and Chemistry
 
-## PW1 Lab A: Radioactive Decay Simulation & Testing
+My coursework repository. Each practical is under PW<n>/Lab <X>/.
 
-### Overview
-This repository contains a Python implementation of a stochastic radioactive decay simulation. At each time step $\Delta t = 0.05$, atoms have an independent probability $P = \lambda \Delta t$ of decaying.
+## Setup
 
-### Conda Environment
-The project relies on a Conda environment `cspc` configured with Python 3.11, NumPy, and Pytest.
-
-### Running Tests
-To run the automated test suite for the decay module, activate the environment and execute `pytest`:
-
-```bash
+Create the environment for a given lab:
+```bash```
+conda env create -f PW<n>/Lab\ <X>/environment.yml
 conda activate cspc
-cd "PW1/Lab A"
-pytest -v
+
+## PW1 Lab A: Reproducible Foundations
+
+**What I built:**
+Set up the CSPC course repository, configured the Conda environment, implemented unit tests for radioactive decay simulation, and measured NumPy performance gains.
+
+**Speed comparison (loop vs NumPy):**
+
+    loop: 1.8302 s
+
+    numpy: 0.0002 s
+
+    speed-up: 11103.52x faster
+
+**Tests: all passing? yes**
+
+**Conclusion:**
+NumPy vectorized operations provide a massive speed-up compared to standard Python loops for stochastic decay calculations. Configuring Pytest and Git ensures reproducibility and proper trackability across the development cycle.
