@@ -26,3 +26,14 @@ Set up the CSPC course repository, configured the Conda environment, implemented
 
 **Conclusion:**
 NumPy vectorized operations provide a massive speed-up compared to standard Python loops for stochastic decay calculations. Configuring Pytest and Git ensures reproducibility and proper trackability across the development cycle.
+
+## PW1 Lab B: Data, Plotting, and Automation
+
+**What I built:**
+Implemented `plot.py` to compare observed decay data against the theoretical analytical law, and automated the graph generation pipeline using Snakemake.
+
+**Data & Plot Analysis:**
+The observed data matches the analytical curve ($N_0 e^{-\lambda t}$) extremely well. The scatter points align closely with the exponential decay line, showing that the physical process follows theoretical predictions.
+
+**Snakemake Pipeline:**
+The Snakemake pipeline automates `figure.png` generation by monitoring file modification dates, ensuring the plot updates automatically when code or data changes while skipping unnecessary executions.
