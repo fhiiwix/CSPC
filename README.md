@@ -40,6 +40,24 @@ The Snakemake pipeline automates `figure.png` generation by monitoring file modi
 
 ## PW2 Lab A: Motion from Tracking Data
 
-- **Mean acceleration:** Measured average acceleration is `-8.58 m/s²` (close to $g = -9.81\text{ m/s}^2$, confirming free fall)[cite: 1, 5].
-- **Noise observation:** Numerical differentiation (`np.gradient`) amplifies noise because small fluctuations in position measurements result in large changes in computed rates when divided by small time steps ($\Delta t$)[cite: 1, 2].
-- **Integration result:** Integrating the noisy acceleration back up suppresses the noise due to cancellation during summation, recovering the original position within a maximum error of `0.7846 m`[cite: 2, 5].
+- **Mean acceleration:** Measured average acceleration is `-8.58 m/s²` (close to $g = -9.81\text{ m/s}^2$, confirming free fall).
+- **Noise observation:** Numerical differentiation (`np.gradient`) amplifies noise because small fluctuations in position measurements result in large changes in computed rates when divided by small time steps ($\Delta t$).
+- **Integration result:** Integrating the noisy acceleration back up suppresses the noise due to cancellation during summation, recovering the original position within a maximum error of `0.7846 m`.
+
+## PW2 Lab B: Optimization in Chemistry
+
+- **Method Comparison (Part 2):**
+  - On a simple convex function $f(x) = (x-3)^2 + 1$, all three methods (Gradient Descent, Newton's method, and SLSQP) easily converged to the global minimum at $x = 3.0000$.
+  - On a non-convex function $g(x) = x^4 - 3x^2 + x + 5$, the starting point and algorithm mattered significantly:
+    - From $x_0 = 0$: GD and SLSQP reached the local minimum at $x \approx -1.3008$, while Newton's method landed on a stationary point at $x \approx 0.1699$ (which is a local maximum, $g'' < 0$).
+    - From $x_0 = 2$: GD and Newton converged to $x \approx 1.1309$ (local minimum), whereas SLSQP reached the deeper minimum at $x \approx -1.3006$.
+
+- **Kinetics Fit (Part 3):**
+  - Fitted reaction rate constant: $k = 0.2618\text{ s}^{-1}$.
+
+- **Chemical Equilibrium (Part 4):**
+  - Equilibrium extent $x = 0.6638$ (both Newton and SLSQP agreed).
+  - Equilibrium composition: $n_{\text{H}_2} = 0.3362\text{ mol}$, $n_{\text{I}_2} = 0.3362\text{ mol}$, $n_{\text{HI}} = 1.3277\text{ mol}$.
+
+- **Titration Equivalence Point (Part 5):**
+  - Equivalence point volume: $50.00\text{ mL}$ (where $\text{pH} = 7.00$ and slope peaks at $4.00$).
