@@ -37,3 +37,9 @@ The observed data matches the analytical curve ($N_0 e^{-\lambda t}$) extremely 
 
 **Snakemake Pipeline:**
 The Snakemake pipeline automates `figure.png` generation by monitoring file modification dates, ensuring the plot updates automatically when code or data changes while skipping unnecessary executions.
+
+## PW2 Lab A: Motion from Tracking Data
+
+- **Mean acceleration:** Measured average acceleration is `-8.58 m/s²` (close to $g = -9.81\text{ m/s}^2$, confirming free fall)[cite: 1, 5].
+- **Noise observation:** Numerical differentiation (`np.gradient`) amplifies noise because small fluctuations in position measurements result in large changes in computed rates when divided by small time steps ($\Delta t$)[cite: 1, 2].
+- **Integration result:** Integrating the noisy acceleration back up suppresses the noise due to cancellation during summation, recovering the original position within a maximum error of `0.7846 m`[cite: 2, 5].
