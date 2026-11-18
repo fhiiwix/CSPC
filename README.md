@@ -126,3 +126,19 @@ To isolate the true chemical effect, the dataset was stratified to patients livi
 Using normalized value counts on the `target` column, the **Shannon Entropy** was calculated as:
 $$H = -\sum p_i \log_2(p_i) = 0.9951 \text{ bits}$$
 Since the maximum possible entropy for a binary variable is $1.0$ bit, the dataset is nearly evenly balanced (~50/50 split), meaning blind guessing offers almost no advantage over random chance.
+
+## Practical Work 4: Machine Learning: Supervised and Unsupervised
+
+### Session A: Concrete Compressive Strength (Supervised)
+* **Data Cleaning:** Removed 25 duplicate rows from 1030 initial laboratory samples to prevent data leakage between train/test splits[cite: 11].
+* **Linear Regression:** Fitted on 8 ingredients/features. Residual plots against age (`results/residuals_age.png`) show a systematic non-linear pattern, confirming that age affects strength logarithmically rather than linearly.
+* **Polynomial Regression:** Tested degrees 1 to 4. Degree 2/3 significantly improves $R^2$, while Degree 4 overfits catastrophically ($p = 494$ features vs. 824 training rows).
+* **Classification (Threshold $\ge 40$ MPa):** Evaluated KNN ($K=5$) and Decision Trees. KNN achieved strong test accuracy (~95.6%), balancing precision and recall.
+
+### Session B: Wine Chemistry (Unsupervised)
+* **PCA & Scaling:** Comparing raw vs. scaled PCA demonstrates that unscaled features with large numerical ranges (like proline) completely dominate PC1. Scaling puts all 13 chemical measurements on an equal footing.
+* **Scree Plot:** Approximately 3-4 components are needed to retain 90% of the total variance (`results/scree_plot.png`).
+* **K-Means Clustering & Agreement:** Unsupervised K-Means ($k=3$) on scaled data achieved an exceptional agreement score (~90%+) when cross-tabulated against true grape cultivars (`results/B_agreement.csv`), proving that chemical composition naturally segregates the wine varieties without seeing labels.
+
+### Snakemake Automation
+* The entire workflow is fully automated via `Snakefile`. Running `snakemake --cores 1` reproduces all data fetching, model training, evaluations, and generates all required plots and CSV outputs in `results/`.
